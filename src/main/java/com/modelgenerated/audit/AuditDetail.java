@@ -13,11 +13,11 @@ import java.util.Date;
 
 
 public interface AuditDetail extends ValueObject, Displayable {
-    public static final FieldAttribute ATTRIB_COLUMNNAME = new FieldAttribute("ColumnName", null);
-    public static final FieldAttribute ATTRIB_NEWVALUE = new FieldAttribute("NewValue", null);
-    public static final FieldAttribute ATTRIB_OLDVALUE = new FieldAttribute("OldValue", null);
-    public static final FieldAttribute ATTRIB_RECORDID = new FieldAttribute("RecordId", null);
-    public static final FieldAttribute ATTRIB_TABLENAME = new FieldAttribute("TableName", null);
+    public static final FieldAttribute ATTRIB_COLUMNNAME = new FieldAttribute("ColumnName", null, 0);
+    public static final FieldAttribute ATTRIB_NEWVALUE = new FieldAttribute("NewValue", null, 0);
+    public static final FieldAttribute ATTRIB_OLDVALUE = new FieldAttribute("OldValue", null, 0);
+    public static final FieldAttribute ATTRIB_RECORDID = new FieldAttribute("RecordId", null, 0);
+    public static final FieldAttribute ATTRIB_TABLENAME = new FieldAttribute("TableName", null, 0);
     public String getTableName();
     public void setTableName(String newTableName);
     public String getColumnName();

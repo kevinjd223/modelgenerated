@@ -13,7 +13,7 @@ import java.io.Serializable;
 
 
 /**
- * This object is used by data access objects to give context for database access.
+ * This object is used by data access objects to give context to updates.
  * 
  * @author  kevind
  */

@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Base class for generate value objects.
+ *
  * @author  kevind
  */
 public abstract class AbstractValueObject implements ValueObject, Serializable {
@@ -44,11 +44,7 @@ public abstract class AbstractValueObject implements ValueObject, Serializable {
     public AbstractValueObject() {
         isNew = true;
     }
-
-    /**
-     * The user object used to read or create this object.
-     * @return
-     */
+    
     @Override
     public UserContext getUserContext() {
         return userContext;
@@ -58,10 +54,7 @@ public abstract class AbstractValueObject implements ValueObject, Serializable {
     public void setUserContext(UserContext newUserContext) {
     	userContext = newUserContext;        
     }
-
-    /**
-     * The unigue id of this object
-     */
+    
     @Override
     public Identity getId() {
         return id;
@@ -111,12 +104,7 @@ public abstract class AbstractValueObject implements ValueObject, Serializable {
     public void setIsDeleted(boolean newIsDeleted) {
         isDeleted = newIsDeleted;
     }
-
-    /**
-     * Returns the New flag.
-     * True if this object is newly created and has yet to be saved to the database.
-     * @return
-     */
+    
     @Override
     public boolean getIsNew() {
         return isNew;
@@ -126,11 +114,7 @@ public abstract class AbstractValueObject implements ValueObject, Serializable {
     public void setIsNew(boolean newIsNew) {
         isNew = newIsNew;
     }
-
-    /**
-     *
-     * @return
-     */
+    
     @Override
     public boolean getIsJITLoadingEnabled() {
         return jitLoadingEnabled != null;
