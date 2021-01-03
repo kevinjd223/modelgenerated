@@ -13,9 +13,9 @@ import java.util.Date;
 
 
 public interface Audit extends ValueObject, Displayable {
-    public static final FieldAttribute ATTRIB_EVENTDATE = new FieldAttribute("EventDate", null);
-    public static final FieldAttribute ATTRIB_EVENTTYPE = new FieldAttribute("EventType", null);
-    public static final FieldAttribute ATTRIB_SYSTEMUSER = new FieldAttribute("SystemUser", null);
+    public static final FieldAttribute ATTRIB_EVENTDATE = new FieldAttribute("EventDate", null, 0);
+    public static final FieldAttribute ATTRIB_EVENTTYPE = new FieldAttribute("EventType", null, 0);
+    public static final FieldAttribute ATTRIB_SYSTEMUSER = new FieldAttribute("SystemUser", null, 0);
     public String getSystemUser();
     public void setSystemUser(String newSystemUser);
     public String getEventType();

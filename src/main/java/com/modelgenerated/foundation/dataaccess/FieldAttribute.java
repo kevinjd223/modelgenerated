@@ -1,54 +1,59 @@
-/*
- * Created on Sep 30, 2006
+/* FieldAttribute.java
  *
- * To change the template for this generated file go to
- * Window&gt;Preferences&gt;Java&gt;Code Generation&gt;Code and Comments
  */
 package com.modelgenerated.foundation.dataaccess;
-
 
 import java.io.Serializable;
 
 import com.modelgenerated.util.StringUtil;
 
 /**
- *
+ * Describes an attribute of a generated object.
  */
 public class FieldAttribute implements Serializable {
 	private static final long serialVersionUID = 1L;
-	String attributeName;
-    String columnReference;
-    
-    public FieldAttribute(String attributeName, String columnReference) {
-        this.attributeName = attributeName;
-        this.columnReference = columnReference;
-    }
+	/**
+	 * The name of the attribute.
+	 */
+	public final String attributeName;
+	/**
+	 * The database column referenced by this attribute. Will be null in column
+	 * is same as attribute name.
+	 */
+	public final String columnReference;
+	/**
+	 * For string attributes, this is the max length that can be stored in the
+	 * database. Will be 0 if the attribute is not a string.
+	 */
+	public final int length;
 
+	public FieldAttribute(String attributeName, String columnReference, int length) {
+		this.attributeName = attributeName;
+		this.columnReference = columnReference;
+		this.length = length;
+	}
+
+	/**
+	 * Returns the attribute name.
+	 */
 	public String getAttributeName() {
 		return attributeName;
 	}
-	public void setAttributeName(String string) {
-		attributeName = string;
-	}
 
+	/**
+	 * Returns the column in the database that is references. Only used for
+	 * join, otherwise will be null.
+	 */
 	public String getColumnReference() {
-        return columnReference;
-	}
-	public void setColumnReference(String string) {
-		columnReference = string;
+		return columnReference;
 	}
 
-	public boolean equals(Object o) {
-		if (o instanceof FieldAttribute) {
-			FieldAttribute fieldAttribute = (FieldAttribute)o;
-			if (StringUtil.same(this.getAttributeName(), fieldAttribute.getAttributeName())
-					&& StringUtil.same(this.getColumnReference(), fieldAttribute.getColumnReference())) {
-				return true;
-			}
-		}
-		return false;
+	/**
+	 * Returns the max length that can be stored for a string. Will be 0 if the
+	 * attribut is not a string.
+	 */
+	public int getLength() {
+		return length;
 	}
-	
-	
-	
+
 }

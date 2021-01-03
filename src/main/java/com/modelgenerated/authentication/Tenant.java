@@ -13,7 +13,7 @@ import java.util.Date;
 
 
 public interface Tenant extends ValueObject, Displayable {
-    public static final FieldAttribute ATTRIB_TENANTNAME = new FieldAttribute("TenantName", null);
+    public static final FieldAttribute ATTRIB_TENANTNAME = new FieldAttribute("TenantName", null, 0);
     public String getTenantName();
     public void setTenantName(String newTenantName);
 }
