@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Model.xml
+-->
+
+<Model>
+    <ObjectDescriptorPath>./objectdescriptors</ObjectDescriptorPath>
+    <ServiceDescriptorPath>./servicedescriptors</ServiceDescriptorPath>
+    <PackagesToGenerate>com.modelgenerated</PackagesToGenerate>
+    <Objects>
+        <ObjectDescriptor>Account.xml</ObjectDescriptor>
+        <ObjectDescriptor>Audit.xml</ObjectDescriptor>
+        <ObjectDescriptor>AuditDetail.xml</ObjectDescriptor>
+        <ObjectDescriptor>Tenant.xml</ObjectDescriptor>
+    </Objects>
+    <Enums>
+    </Enums>
+    <Services>
+    </Services>
+</Model>

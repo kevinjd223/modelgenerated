@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : TestChildUpdate.xml
+    Created on : January 28, 2003, 7:33 AM
+    Author     : kevind
+    Description:
+        Purpose of the document follows.
+-->
+
+<ScreenDescriptor>
+    <EjbName>Test Service</EjbName>
+    <HomeName>com.modelgenerated.securitytest.ServiceTestHome</HomeName>
+    <RemoteName>com.modelgenerated.securitytest.ServiceTest</RemoteName>
+    <EjbClassName>com.modelgenerated.securitytest.ServiceTestBean</EjbClassName>
+
+    <CrudObjects>
+        <CrudObject>
+        	<ObjectClass>com.modelgenerated.test.TestChild</ObjectClass>
+        	<GenerateListMethods>yes</GenerateListMethods>
+        	<GenerateSearchMethod>yes</GenerateSearchMethod>
+        </CrudObject>   
+    </CrudObjects>
+    
+    <Methods>
+        <Method>
+        	<Description>this is a test comment</Description>
+        	<Prototype>public void doStuff()</Prototype>
+        </Method>   
+        <Method>
+        	<Description>this is a test comment</Description>
+        	<Prototype>String anotherMethod(UserContext userContext, com.modelgenerated.test.TestChild testChild)</Prototype>
+        </Method>   
+        <Method>
+        	<Description>this is a test comment</Description>
+        	<Prototype>void anotherMethod2(UserContext userContext, com.modelgenerated.workflow.Path path)</Prototype>
+        </Method>   
+    </Methods>
+    
+    
+</ScreenDescriptor>

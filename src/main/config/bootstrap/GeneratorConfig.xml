@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : GeneratorConfig.xml
+    Created on : October 22, 2002, 8:02 PM
+    Author     : kevind
+    Description:
+        Purpose of the document follows.
+-->
+
+<root>
+    <ConfigData>
+        <ModelLocation>/src/main/config/model/Model.xml</ModelLocation>
+        
+        <!-- data access -->
+        <JavaCodeFolder>/src/main/java/</JavaCodeFolder>
+        <JunitFolder>/src/test/java/</JunitFolder>
+        <TestDataFolder>/src/test/java/</TestDataFolder>
+        <DatabaseFolder>/src/main/config/database/</DatabaseFolder>
+        <ObjectFieldSizePath>/src/main/config/bootstrap/</ObjectFieldSizePath>        
+
+
+    </ConfigData>
+</root>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : SampleConfig.xml.xml
+    Created on : October 22, 2002, 8:02 PM
+    Author     : kevind
+    Description:
+        Purpose of the document follows.
+-->
+
+<root ConfigClassName="com.modelgenerated.foundation.factory.FactoryConfig">
+    <ConfigData>
+        <class interface="com.modelgenerated.domain.party.Person" class="com.modelgenerated.domain.party.impl.PersonImpl"/>
+        <class interface="com.modelgenerated.domain.party.dao.PersonDAO" class="com.modelgenerated.domain.party.impl.PersonDAOImpl"/>
+        <class interface="com.modelgenerated.domain.party.PersonList" class="com.modelgenerated.domain.party.impl.PersonListImpl"/>
+        <class interface="com.modelgenerated.domain.party.Company" class="com.modelgenerated.domain.party.impl.gen.CompanyImpl"/>
+        <class interface="com.modelgenerated.domain.party.dao.CompanyDAO" class="com.modelgenerated.domain.party.impl.gen.CompanyDAOImpl"/>
+        <class interface="com.modelgenerated.domain.party.CompanyList" class="com.modelgenerated.domain.party.impl.gen.CompanyListImpl"/>
+        <class interface="com.modelgenerated.domain.contactinfo.ContactInfo" class="com.modelgenerated.domain.contactinfo.impl.gen.ContactInfoImpl"/>
+        <class interface="com.modelgenerated.domain.contactinfo.dao.ContactInfoDAO" class="com.modelgenerated.domain.contactinfo.impl.gen.ContactInfoDAOImpl"/>
+        <class interface="com.modelgenerated.domain.contactinfo.ContactInfoList" class="com.modelgenerated.domain.contactinfo.impl.gen.ContactInfoListImpl"/>
+        <class interface="com.modelgenerated.domain.security.Account" class="com.modelgenerated.domain.security.impl.gen.AccountImpl"/>
+        <class interface="com.modelgenerated.domain.security.dao.AccountDAO" class="com.modelgenerated.domain.security.impl.gen.AccountDAOImpl"/>
+        <class interface="com.modelgenerated.domain.security.AccountList" class="com.modelgenerated.domain.security.impl.gen.AccountListImpl"/>
+        <class interface="com.modelgenerated.document.Document" class="com.modelgenerated.document.impl.DocumentImpl"/>
+        <class interface="com.modelgenerated.document.dao.DocumentDAO" class="com.modelgenerated.document.impl.DocumentDAOImpl"/>
+        <class interface="com.modelgenerated.document.DocumentList" class="com.modelgenerated.document.impl.gen.DocumentListImpl"/>
+        <class interface="com.modelgenerated.document.DocumentData" class="com.modelgenerated.document.impl.DocumentDataImpl"/>
+
+        <class interface="com.modelgenerated.lookup.Lookup" class="com.modelgenerated.lookup.impl.LookupImpl"/>
+        <class interface="com.modelgenerated.lookup.dao.LookupDAO" class="com.modelgenerated.lookup.impl.gen.LookupDAOImpl"/>
+        <class interface="com.modelgenerated.lookup.LookupList" class="com.modelgenerated.lookup.impl.gen.LookupListImpl"/>
+        <class interface="com.modelgenerated.lookup.LookupData" class="com.modelgenerated.lookup.impl.gen.LookupDataImpl"/>
+        <class interface="com.modelgenerated.lookup.dao.LookupDataDAO" class="com.modelgenerated.lookup.impl.gen.LookupDataDAOImpl"/>
+        <class interface="com.modelgenerated.lookup.LookupDataList" class="com.modelgenerated.lookup.impl.gen.LookupDataListImpl"/>
+        <class interface="com.modelgenerated.lookup.LookupRelation" class="com.modelgenerated.lookup.impl.gen.LookupRelationImpl"/>
+        <class interface="com.modelgenerated.lookup.dao.LookupRelationDAO" class="com.modelgenerated.lookup.impl.gen.LookupRelationDAOImpl"/>
+        <class interface="com.modelgenerated.lookup.LookupRelationList" class="com.modelgenerated.lookup.impl.gen.LookupRelationListImpl"/>
+
+        <class interface="com.modelgenerated.audit.Audit" class="com.modelgenerated.audit.impl.gen.AuditImpl"/>
+        <class interface="com.modelgenerated.audit.dao.AuditDAO" class="com.modelgenerated.audit.impl.gen.AuditDAOImpl"/>
+        <class interface="com.modelgenerated.audit.AuditList" class="com.modelgenerated.audit.impl.gen.AuditListImpl"/>
+        <class interface="com.modelgenerated.audit.AuditDetail" class="com.modelgenerated.audit.impl.gen.AuditDetailImpl"/>
+        <class interface="com.modelgenerated.audit.dao.AuditDetailDAO" class="com.modelgenerated.audit.impl.gen.AuditDetailDAOImpl"/>
+        <class interface="com.modelgenerated.audit.AuditDetailList" class="com.modelgenerated.audit.impl.gen.AuditDetailListImpl"/>
+        
+        <class interface="com.modelgenerated.rules.BusinessRule" class="com.modelgenerated.rules.impl.gen.BusinessRuleImpl"/>
+        <class interface="com.modelgenerated.rules.dao.BusinessRuleDAO" class="com.modelgenerated.rules.impl.gen.BusinessRuleDAOImpl"/>
+        <class interface="com.modelgenerated.rules.BusinessRuleList" class="com.modelgenerated.rules.impl.gen.BusinessRuleListImpl"/>
+        
+        <class interface="com.modelgenerated.workflow.Workflow" class="com.modelgenerated.workflow.impl.gen.WorkflowImpl"/>
+        <class interface="com.modelgenerated.workflow.dao.WorkflowDAO" class="com.modelgenerated.workflow.impl.gen.WorkflowDAOImpl"/>
+        <class interface="com.modelgenerated.workflow.WorkflowList" class="com.modelgenerated.workflow.impl.gen.WorkflowListImpl"/>
+        <class interface="com.modelgenerated.workflow.Task" class="com.modelgenerated.workflow.impl.gen.TaskImpl"/>
+        <class interface="com.modelgenerated.workflow.dao.TaskDAO" class="com.modelgenerated.workflow.impl.gen.TaskDAOImpl"/>
+        <class interface="com.modelgenerated.workflow.TaskList" class="com.modelgenerated.workflow.impl.gen.TaskListImpl"/>
+        <class interface="com.modelgenerated.workflow.WorkflowPlan" class="com.modelgenerated.workflow.impl.gen.WorkflowPlanImpl"/>
+        <class interface="com.modelgenerated.workflow.dao.WorkflowPlanDAO" class="com.modelgenerated.workflow.impl.gen.WorkflowPlanDAOImpl"/>
+        <class interface="com.modelgenerated.workflow.WorkflowPlanList" class="com.modelgenerated.workflow.impl.gen.WorkflowPlanListImpl"/>
+        <class interface="com.modelgenerated.workflow.Step" class="com.modelgenerated.workflow.impl.gen.StepImpl"/>
+        <class interface="com.modelgenerated.workflow.dao.StepDAO" class="com.modelgenerated.workflow.impl.gen.StepDAOImpl"/>
+        <class interface="com.modelgenerated.workflow.StepList" class="com.modelgenerated.workflow.impl.gen.StepListImpl"/>
+        <class interface="com.modelgenerated.workflow.Path" class="com.modelgenerated.workflow.impl.gen.PathImpl"/>
+        <class interface="com.modelgenerated.workflow.dao.PathDAO" class="com.modelgenerated.workflow.impl.gen.PathDAOImpl"/>
+        <class interface="com.modelgenerated.workflow.PathList" class="com.modelgenerated.workflow.impl.gen.PathListImpl"/>
+        
+        <class interface="com.modelgenerated.test.TestParent" class="com.modelgenerated.test.impl.gen.TestParentImpl"/>
+        <class interface="com.modelgenerated.test.dao.TestParentDAO" class="com.modelgenerated.test.impl.gen.TestParentDAOImpl"/>
+        <class interface="com.modelgenerated.test.TestParentList" class="com.modelgenerated.test.impl.gen.TestParentListImpl"/>
+        <class interface="com.modelgenerated.test.TestChild" class="com.modelgenerated.test.impl.gen.TestChildImpl"/>
+        <class interface="com.modelgenerated.test.dao.TestChildDAO" class="com.modelgenerated.test.impl.gen.TestChildDAOImpl"/>
+        <class interface="com.modelgenerated.test.TestChildList" class="com.modelgenerated.test.impl.gen.TestChildListImpl"/>
+        <class interface="com.modelgenerated.test.TestClass" class="com.modelgenerated.test.impl.gen.TestClassImpl"/>
+        <class interface="com.modelgenerated.test.dao.TestClassDAO" class="com.modelgenerated.test.impl.gen.TestClassDAOImpl"/>
+        <class interface="com.modelgenerated.test.TestClassList" class="com.modelgenerated.test.impl.gen.TestClassListImpl"/>
+        
+    </ConfigData>
+</root>

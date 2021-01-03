@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : SampleConfig.xml.xml
+    Created on : October 22, 2002, 8:02 PM
+    Author     : kevind
+    Description:
+        Purpose of the document follows.
+-->
+
+<root>
+    <ConfigData>
+        <connection name="default" driverName="com.mysql.jdbc.Driver" connectionString="jdbc:mysql://localhost/squid1?user=root&amp;password="/>
+        
+        <connection name="default_jdbc" driverName="com.mysql.jdbc.Driver" connectionString="jdbc:mysql://localhost/squid1?user=root&amp;password="/>
+        <jndiconnection name="default_jndi" jndiName="java:/MySqlDS"/>
+    </ConfigData>
+</root>

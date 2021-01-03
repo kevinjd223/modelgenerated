@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Tenanct.xml
+    Created on : April 18, 2015, 7:33 AM
+    Author     : kevind
+    Description:
+        Purpose of the document follows.
+-->
+
+<ObjectDescriptor>
+    <Interface>com.modelgenerated.authentication.Tenant</Interface>
+    <Implementation>com.modelgenerated.authentication.impl.gen.TenantImpl</Implementation>
+    <BaseInterface></BaseInterface>
+    <TableName>Tenant</TableName>
+    <MultiTenant>no</MultiTenant> <!-- this table can't be multiTenant as it's used to manage MultiTenancy -->
+    <Fields>
+        <Field>
+            <Name>TenantName</Name>
+            <ColumnName>TenantName</ColumnName>
+            <Type>String</Type>
+            <Size>50</Size>
+            <Nullable>yes</Nullable>
+        </Field>
+    </Fields>   
+    <Methods>
+    </Methods>
+	
+    
+    <Queries>
+        <Query>
+            <Type>FindBy</Type>
+            <MethodName>findByName</MethodName>
+            <FieldName>TenantName</FieldName>           
+        </Query>
+    </Queries>
+</ObjectDescriptor>

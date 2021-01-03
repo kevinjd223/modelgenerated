@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : ContactInfo.xml
+    Created on : January 28, 2003, 7:33 AM
+    Author     : kevind
+    Description:
+        Purpose of the document follows.
+-->
+
+<ObjectDescriptor>
+    <Interface>com.modelgenerated.audit.Audit</Interface>
+    <Implementation>com.modelgenerated.audit.impl.gen.AuditImpl</Implementation>
+    <BaseInterface></BaseInterface>
+    <TableName>Audit</TableName>
+    <TableAlias>a</TableAlias>
+    <SupportsAudit>no</SupportsAudit>
+    <Fields>
+        <Field>
+            <Name>SystemUser</Name>
+            <ColumnName>SystemUser</ColumnName>
+            <Type>String</Type>
+            <Size>50</Size>
+            <Nullable>no</Nullable>
+        </Field>
+        <Field>
+            <Name>EventType</Name>
+            <ColumnName>EventType</ColumnName>
+            <Type>String</Type>
+            <Size>20</Size>
+            <Nullable>no</Nullable>
+        </Field>
+        <Field>
+            <Name>EventDate</Name>
+            <ColumnName>EventDate</ColumnName>
+            <Type>Datetime</Type>
+            <Size>50</Size>
+            <Nullable>no</Nullable>
+        </Field>
+    </Fields>   
+    <References>
+        <Reference>
+            <Name>AuditDetailList</Name>
+            <Class>com.modelgenerated.audit.AuditDetailList</Class>
+            <Type>OneToMany</Type>
+            <TargetClass>com.modelgenerated.audit.AuditDetail</TargetClass>
+            <TargetMethod>findByParent</TargetMethod>
+        </Reference>
+    </References>
+    
+    <Queries>
+        <Query>
+            <Type>FindBy</Type>
+            <MethodName>findByUser</MethodName>
+            <FieldName>SystemUser</FieldName>           
+        </Query>
+    </Queries>
+    
+    <Indicies>
+        <Index>
+            <IndexName>AuditIdEventDate</IndexName>
+            <Columns>Id, EventDate</Columns>
+        </Index>   
+    </Indicies>
+    
+</ObjectDescriptor>

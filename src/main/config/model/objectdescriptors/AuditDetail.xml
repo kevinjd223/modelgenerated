@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : ContactInfo.xml
+    Created on : January 28, 2003, 7:33 AM
+    Author     : kevind
+    Description:
+        Purpose of the document follows.
+-->
+
+<ObjectDescriptor>
+    <Interface>com.modelgenerated.audit.AuditDetail</Interface>
+    <Implementation>com.modelgenerated.audit.impl.gen.AuditDetailImpl</Implementation>
+    <BaseInterface></BaseInterface>
+    <TableName>AuditDetail</TableName>
+    <TableAlias>ad</TableAlias>
+    <SupportsAudit>no</SupportsAudit>
+    <Fields>
+        <Field>
+            <Name>TableName</Name>
+            <ColumnName>TableName</ColumnName>
+            <Type>String</Type>
+            <Size>50</Size>
+            <Nullable>no</Nullable>
+        </Field>
+        <Field>
+            <Name>ColumnName</Name>
+            <ColumnName>ColumnName</ColumnName>
+            <Type>String</Type>
+            <Size>50</Size>
+            <Nullable>yes</Nullable>
+        </Field>
+
+        <Field>
+            <Name>OldValue</Name>
+            <ColumnName>OldValue</ColumnName>
+            <Type>String</Type>
+            <Size>255</Size>
+            <Nullable>yes</Nullable>
+        </Field>
+
+        <Field>
+            <Name>NewValue</Name>
+            <ColumnName>NewValue</ColumnName>
+            <Type>String</Type>
+            <Size>255</Size>
+            <Nullable>yes</Nullable>
+        </Field>
+
+        
+        <Field>
+            <Name>RecordId</Name>
+            <ColumnName>RecordId</ColumnName>
+            <Type>Identity</Type>
+            <Nullable>yes</Nullable>
+        </Field>
+        
+        
+        <Field>
+            <Name>Parent</Name>
+            <ColumnName>AuditId</ColumnName>
+            <Type>Class</Type>
+            <Class>com.modelgenerated.audit.Audit</Class>
+            <Nullable>yes</Nullable>
+            <UseInTest>yes</UseInTest>
+        </Field>                
+        
+    </Fields>   
+    
+    <Queries>
+        <Query>
+            <Type>FindBy-Multi</Type>
+            <MethodName>findByParent</MethodName>
+            <FieldName>Parent</FieldName>
+        </Query>
+    </Queries>
+    
+    
+</ObjectDescriptor>

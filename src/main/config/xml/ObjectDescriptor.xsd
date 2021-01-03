@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://www.modelgenerated.com/ObjectDescriptor" 
+	xmlns:tns="http://www.modelgenerated.com/ObjectDescriptor" 
+	elementFormDefault="qualified">
+
+    <element name="ObjectDescriptor" type="tns:ObjectDescriptorType">
+    </element>
+    
+    <complexType name="NewComplexType"></complexType>
+
+    <complexType name="ObjectDescriptorType">
+    	<sequence>
+    		<element name="Interface" type="string" minOccurs="1" maxOccurs="1"></element>
+    		<element name="Implementation" type="string" maxOccurs="1" minOccurs="1"></element>
+    		<element name="BaseInterface" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="TableName" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="TableAlias" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="CreatedModifiedFields" type="tns:YesNoType" maxOccurs="1" minOccurs="0"></element>
+            <element name="Fields" type="tns:FieldsType" minOccurs="1" maxOccurs="1">
+				<unique name="fieldName">
+    				<selector xpath="tns:Field"/>
+    				<field    xpath="tns:Name"/>
+  				</unique>            
+				<unique name="columnName">
+    				<selector xpath="tns:Field"/>
+    				<field    xpath="tns:ColumnName"/>
+  				</unique>            
+  			</element>
+            <element name="References" type="tns:ReferencesType" minOccurs="0" maxOccurs="1"></element>
+            <element name="Queries" type="tns:QueriesType" minOccurs="0" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
+    
+
+    <complexType name="FieldsType">
+    	<sequence>
+    		<element name="Field" minOccurs="0" maxOccurs="unbounded">
+    			<complexType>
+    				<all>
+				    	<element name="Name" type="string" maxOccurs="1" minOccurs="1"></element>
+				    	<element name="Description" type="string" maxOccurs="1" minOccurs="0"></element>
+				    	<element name="ColumnName" type="string" maxOccurs="1" minOccurs="0"></element>
+				    	<element name="Alias" type="string" maxOccurs="1" minOccurs="0"></element>
+				    	<element name="Type" type="tns:FieldTypeType" maxOccurs="1" minOccurs="1"></element>
+				    	<element name="Size" type="int" maxOccurs="1" minOccurs="0"></element>
+				    	<element name="Nullable" type="tns:YesNoType" maxOccurs="1" minOccurs="0"></element>
+				    	<element name="Class" type="string" maxOccurs="1" minOccurs="0"></element>
+				    	<element name="JoinField" type="string" maxOccurs="1" minOccurs="0"></element>
+				    	<element name="UseInTest" type="string" maxOccurs="1" minOccurs="0"></element>
+				    	<element name="Persisted" type="string" maxOccurs="1" minOccurs="0"></element>
+    				</all>
+    			</complexType>
+    		</element>
+    	</sequence>
+    </complexType>
+    
+    
+
+    <complexType name="ReferencesType">
+    	<sequence>
+    		<element name="Reference" minOccurs="0" maxOccurs="unbounded">
+    			<complexType>
+    				<sequence>
+				    	<element name="Name" type="string"></element>
+				    	<element name="Class" type="string"></element>
+				    	<element name="Type" type="string"></element>
+				    	<element name="TargetClass" type="string"></element>
+				    	<element name="TargetMethod" type="string"></element>
+    				</sequence>
+    			</complexType>
+    		</element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="QueriesType">
+    	<sequence>
+    		<element name="Query" minOccurs="0" maxOccurs="unbounded">
+    			<complexType>
+    				<all>
+				    	<element name="MethodName" type="string"></element>
+				    	<element name="Type" type="string"></element>
+				    	<element name="FieldName" type="string"></element>
+				    	<element name="OrderBy" type="string"></element>
+    				</all>
+    			</complexType>
+    		</element>
+    	</sequence>
+    </complexType>
+
+    <simpleType name="YesNoType">
+    	<restriction base="string">
+    		<enumeration value="yes"/>
+    		<enumeration value="no"/>
+    	</restriction>
+    </simpleType>
+
+    <simpleType name="FieldTypeType">
+    	<restriction base="string">
+    		<enumeration value="Boolean"/>
+    		<enumeration value="Class"/>
+    		<enumeration value="Date"/>
+    		<enumeration value="Datetime"/>
+    		<enumeration value="Double"/>
+    		<enumeration value="Identity"/>
+    		<enumeration value="int"/>
+    		<enumeration value="Integer"/>
+    		<enumeration value="ReadOnlyJoin"/>
+    		<enumeration value="String"/>
+    		<enumeration value="Text"/>
+    		<enumeration value="Enum"/>
+    	</restriction>
+    </simpleType>
+</schema>

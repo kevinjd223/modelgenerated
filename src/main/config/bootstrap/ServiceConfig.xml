@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : ServiceConfig.xml.xml
+    Created on : December 19, 2002, 8:44 AM
+    Author     : kevind
+    Description:
+        Purpose of the document follows.
+-->
+
+<root>
+     <Services>
+         <Service>
+             <Remote>com.modelgenerated.domain.security.SecurityService</Remote>
+             <Name>Security Service</Name>
+             <Home>com.modelgenerated.domain.security.SecurityServiceHome</Home>
+             <EjbClass>com.modelgenerated.domain.security.SecurityServiceBean</EjbClass>
+             <JndiServer>default</JndiServer>
+         </Service>
+         <Service>
+             <Remote>com.modelgenerated.lookup.LookupService</Remote>
+             <Name>Lookup Service</Name>
+             <Home>com.modelgenerated.lookup.LookupServiceHome</Home>
+             <EjbClass>com.modelgenerated.lookup.LookupServiceBean</EjbClass>
+             <JndiServer>default</JndiServer>
+         </Service>
+     </Services>
+</root>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : ContactInfo.xml
+    Created on : January 28, 2003, 7:33 AM
+    Author     : kevind
+    Description:
+        Purpose of the document follows.
+-->
+
+<ObjectDescriptor>
+    <Interface>com.modelgenerated.authentication.Account</Interface>
+    <Implementation>com.modelgenerated.authentication.impl.gen.AccountBaseImpl</Implementation>
+    <BaseInterface></BaseInterface>
+    <TableName>Account</TableName>
+    <Fields>
+        <Field>
+            <Name>UserName</Name>
+            <ColumnName>UserName</ColumnName>
+            <Type>String</Type>
+            <Size>50</Size>
+            <Nullable>yes</Nullable>
+        </Field>
+        <Field>
+            <Name>Password</Name>
+            <ColumnName>Password</ColumnName>
+            <Type>String</Type>
+            <Size>50</Size>
+            <Nullable>yes</Nullable>
+        </Field>
+        <Field>
+            <Name>LockedOut</Name>
+            <ColumnName>LockedOut</ColumnName>
+            <Type>Boolean</Type>
+            <Nullable>yes</Nullable>
+        </Field>
+        <Field>   
+            <Name>BadAuthenticationAttempts</Name>
+            <ColumnName>BadAuthenticationAttempts</ColumnName>
+            <Type>int</Type>
+            <Nullable>no</Nullable>
+        </Field>
+        
+    </Fields>   
+    <Methods>
+        <Method>
+        	<Description>Accepts a clear text password and fills in hashed password.</Description>
+        	<Prototype>void encryptPassword(String password)</Prototype>
+        </Method>   
+    </Methods>
+	
+    
+    <Queries>
+        <Query>
+            <Type>FindBy</Type>
+            <MethodName>findByUserName</MethodName>
+            <FieldName>UserName</FieldName>           
+        </Query>
+    </Queries>
+    
+    
+    <Indicies>
+        <Index>
+            <IndexName>Account_UserName</IndexName>
+            <Unique>yes</Unique>
+            <Columns>UserName</Columns>
+        </Index>   
+    </Indicies>
+    
+    
+</ObjectDescriptor>

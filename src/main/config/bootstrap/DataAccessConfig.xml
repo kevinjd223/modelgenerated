@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : SampleConfig.xml.xml
+    Created on : October 22, 2002, 8:02 PM
+    Author     : kevind
+    Description:
+        Purpose of the document follows.
+-->
+
+<root>
+    <ConfigData>
+        <ObjectDescriptorPath>./objectdescriptors</ObjectDescriptorPath>
+        <PackagesToGenerate>com.modelgenerated</PackagesToGenerate>
+        <Objects>
+            <Object>
+                <ValueObjectInterface>com.modelgenerated.domain.party.Person</ValueObjectInterface>
+                <DataAccessObjectInterface>com.modelgenerated.domain.party.dao.PersonDAO</DataAccessObjectInterface>
+                <Audited>false</Audited>
+            </Object>
+            <Object>
+                <ValueObjectInterface>com.modelgenerated.domain.party.Company</ValueObjectInterface>
+                <DataAccessObjectInterface>com.modelgenerated.domain.party.dao.CompanyDAO</DataAccessObjectInterface>
+                <Audited>false</Audited>
+                <ObjectDescriptor>CompanyObjectDescriptor.xml</ObjectDescriptor>
+            </Object>
+            
+            <Object>
+                <ValueObjectInterface>com.modelgenerated.lookup.Lookup</ValueObjectInterface>
+                <DataAccessObjectInterface>com.modelgenerated.lookup.dao.LookupDAO</DataAccessObjectInterface>
+                <Audited>false</Audited>
+                <ObjectDescriptor>Lookup.xml</ObjectDescriptor>
+            </Object>
+            <Object>
+                <ValueObjectInterface>com.modelgenerated.lookup.LookupData</ValueObjectInterface>
+                <DataAccessObjectInterface>com.modelgenerated.lookup.dao.LookupDataDAO</DataAccessObjectInterface>
+                <Audited>false</Audited>
+                <ObjectDescriptor>LookupData.xml</ObjectDescriptor>
+            </Object>
+            <Object>
+                <ValueObjectInterface>com.modelgenerated.lookup.LookupRelation</ValueObjectInterface>
+                <DataAccessObjectInterface>com.modelgenerated.lookup.dao.LookupRelationDAO</DataAccessObjectInterface>
+                <Audited>false</Audited>
+                <ObjectDescriptor>LookupRelation.xml</ObjectDescriptor>
+            </Object>
+
+            <Object>
+                <ValueObjectInterface>com.modelgenerated.domain.party.Party</ValueObjectInterface>
+                <DataAccessObjectInterface>com.modelgenerated.domain.party.dao.PartyDAO</DataAccessObjectInterface>
+                <Audited>false</Audited>
+                <ObjectDescriptor>PartyObjectDescriptor.xml</ObjectDescriptor>
+            </Object>
+            <Object>
+                <ValueObjectInterface>com.modelgenerated.domain.contactinfo.ContactInfo</ValueObjectInterface>
+                <DataAccessObjectInterface>com.modelgenerated.domain.contactinfo.dao.ContactInfoDAO</DataAccessObjectInterface>
+                <Audited>false</Audited>
+                <ObjectDescriptor>ContactInfo.xml</ObjectDescriptor>
+            </Object>
+            <Object>
+                <ValueObjectInterface>com.modelgenerated.domain.security.Account</ValueObjectInterface>
+                <DataAccessObjectInterface>com.modelgenerated.domain.security.dao.AccountDAO</DataAccessObjectInterface>
+                <Audited>false</Audited>
+                <ObjectDescriptor>Account.xml</ObjectDescriptor>
+            </Object>
+            
+            <Object>
+                <ValueObjectInterface>com.modelgenerated.document.Document</ValueObjectInterface>
+                <DataAccessObjectInterface>com.modelgenerated.document.dao.DocumentDAO</DataAccessObjectInterface>
+                <Audited>false</Audited>
+            </Object>
+            
+             <Object>
+                <ValueObjectInterface>com.modelgenerated.audit.Audit</ValueObjectInterface>
+                <DataAccessObjectInterface>com.modelgenerated.audit.dao.AuditDAO</DataAccessObjectInterface>
+                <Audited>false</Audited>
+                <ObjectDescriptor>Audit.xml</ObjectDescriptor>
+            </Object>            
+             <Object>
+                <ValueObjectInterface>com.modelgenerated.audit.AuditDetail</ValueObjectInterface>
+                <DataAccessObjectInterface>com.modelgenerated.audit.dao.AuditDetailDAO</DataAccessObjectInterface>
+                <Audited>false</Audited>
+            </Object>
+
+            <Object>
+                <ValueObjectInterface>com.modelgenerated.rules.BusinessRule</ValueObjectInterface>
+                <DataAccessObjectInterface>com.modelgenerated.rules.dao.BusinessRuleDAO</DataAccessObjectInterface>
+                <Audited>false</Audited>
+            </Object>
+            
+             <Object>
+                <ValueObjectInterface>com.modelgenerated.workflow.Path</ValueObjectInterface>
+                <DataAccessObjectInterface>com.modelgenerated.workflow.dao.PathDAO</DataAccessObjectInterface>
+                <Audited>false</Audited>
+            </Object>
+             <Object>
+                <ValueObjectInterface>com.modelgenerated.workflow.Step</ValueObjectInterface>
+                <DataAccessObjectInterface>com.modelgenerated.workflow.dao.StepDAO</DataAccessObjectInterface>
+                <Audited>false</Audited>
+            </Object>
+             <Object>
+                <ValueObjectInterface>com.modelgenerated.workflow.Task</ValueObjectInterface>
+                <DataAccessObjectInterface>com.modelgenerated.workflow.dao.TaskDAO</DataAccessObjectInterface>
+                <Audited>false</Audited>
+            </Object>
+             <Object>
+                <ValueObjectInterface>com.modelgenerated.workflow.Workflow</ValueObjectInterface>
+                <DataAccessObjectInterface>com.modelgenerated.workflow.dao.WorkflowDAO</DataAccessObjectInterface>
+                <Audited>false</Audited>
+            </Object>
+             <Object>
+                <ValueObjectInterface>com.modelgenerated.workflow.WorkflowPlan</ValueObjectInterface>
+                <DataAccessObjectInterface>com.modelgenerated.workflow.dao.WorkflowPlanDAO</DataAccessObjectInterface>
+                <Audited>false</Audited>
+            </Object>
+            
+             <Object>
+                <ValueObjectInterface>com.modelgenerated.test.TestParent</ValueObjectInterface>
+                <DataAccessObjectInterface>com.modelgenerated.test.dao.TestParentDAO</DataAccessObjectInterface>
+                <Audited>false</Audited>
+            </Object>
+             <Object>
+                <ValueObjectInterface>com.modelgenerated.test.TestChild</ValueObjectInterface>
+                <DataAccessObjectInterface>com.modelgenerated.test.dao.TestChildDAO</DataAccessObjectInterface>
+                <Audited>false</Audited>
+            </Object>
+             <Object>
+                <ValueObjectInterface>com.modelgenerated.test.TestClass</ValueObjectInterface>
+                <DataAccessObjectInterface>com.modelgenerated.test.dao.TestClassDAO</DataAccessObjectInterface>
+                <Audited>false</Audited>
+            </Object>
+            
+             <Object>
+                <ValueObjectInterface>com.modelgenerated.rule.BusinessRule</ValueObjectInterface>
+                <DataAccessObjectInterface>com.modelgenerated.rule.dao.BusinessRuleDAO</DataAccessObjectInterface>
+                <Audited>false</Audited>
+            </Object>
+            
+        </Objects>
+    </ConfigData>
+</root>
