@@ -8,29 +8,37 @@ package com.modelgenerated.foundation.dataaccess;
 
 import com.modelgenerated.authentication.Tenant;
 import com.modelgenerated.foundation.identity.Identity;
-
 import java.io.Serializable;
-
+import net.jcip.annotations.Immutable;
 
 /**
  * This object is used by data access objects to give context to updates.
  * 
  * @author  kevind
  */
+@Immutable
 public class UserContext implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private final String userName;
     private final Identity accountId;
     private final Tenant tenant;
-    private Object user;
+    private final Object user;
     
 	/** Creates a new instance of UserContext */
     public UserContext(String userName, Identity accountId, Tenant tenant) {
-    	this.userName = userName;
-    	this.accountId = accountId;
-    	this.tenant = tenant;
+        this.userName = userName;
+        this.accountId = accountId;
+        this.tenant = tenant;
+        this.user = null;
     }
-    
+
+    public UserContext(UserContext userContext, Object _user) {
+        this.userName = userContext.userName;
+        this.accountId = userContext.accountId;
+        this.tenant = userContext.tenant;
+        this.user = _user;
+    }
+
     public String getUserName() {
         return userName;
     }
@@ -50,14 +58,9 @@ public class UserContext implements Serializable {
     /** 
      * User attribute is a place holder for the application to store information about the user. The modelgenerated data access code does not use this in any way other 
      * than to pass it back calling application when requested.
-     * TODO: remove this and make the caller extend this class to add type safe user record.   
      */
     public Object getUser() {
         return user;
-    }
-    
-    public void setUser(Object newUser) {
-        user = newUser;
     }
     
 }
