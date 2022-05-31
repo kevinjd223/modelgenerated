@@ -51,6 +51,14 @@ public class JDBCUtil {
             statement.setString(index, value);
         }        
     }
+
+
+    /**
+     * Sets a date on a jdbc prepared statement
+     * Sets using timestamp which causes problems for "Date" type on mysql 8.0. When used in equal clauses in search
+     * criteria date that should match are not found. This overloaded date method will be replaced to fix this.
+     * @deprecated
+     */
     public static void setStatement(PreparedStatement statement, int index, java.util.Date value, boolean nullable) throws SQLException {
         if (!nullable) {
             Assert.check(value != null, "value != null, index = " + index); 
@@ -61,6 +69,40 @@ public class JDBCUtil {
             statement.setTimestamp(index, new java.sql.Timestamp(value.getTime()));
         }        
     }
+    /**
+     *  Sets a date on a jdbc prepared statement
+     */
+    public static void setStatementDate(PreparedStatement statement, int index, java.util.Date value, boolean nullable) throws SQLException {
+        if (!nullable) {
+            Assert.check(value != null, "value != null, index = " + index);
+        }
+        if (value == null) {
+            statement.setNull(index, Types.DATE);
+        } else {
+            statement.setDate(index, new java.sql.Date(value.getTime()));
+        }
+    }
+    /**
+     *  Sets a datetime on a jdbc prepared statement
+     */
+    public static void setStatementDateTime(PreparedStatement statement, int index, java.util.Date value, boolean nullable) throws SQLException {
+        setStatementTimestamp(statement, index, value, nullable);
+    }
+    /**
+     *  Sets a date on a jdbc prepared statement
+     */
+    public static void setStatementTimestamp(PreparedStatement statement, int index, java.util.Date value, boolean nullable) throws SQLException {
+        if (!nullable) {
+            Assert.check(value != null, "value != null, index = " + index);
+        }
+        if (value == null) {
+            statement.setNull(index, Types.DATE);
+        } else {
+            statement.setTimestamp(index, new java.sql.Timestamp(value.getTime()));
+        }
+    }
+
+
     public static void setStatement(PreparedStatement statement, int index, Long value, boolean nullable) throws SQLException {
         if (!nullable) {
             Assert.check(value != null, "value != null, index = " + index); 
