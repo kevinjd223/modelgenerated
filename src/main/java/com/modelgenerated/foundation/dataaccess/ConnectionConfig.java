@@ -21,6 +21,8 @@ import java.util.Map;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.ParserConfigurationException;
+
+import com.modelgenerated.foundation.logging.Logger;
 import org.xml.sax.SAXException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -30,8 +32,10 @@ import org.w3c.dom.NodeList;
  *
  * @author  kevind
  */
-public class ConnectionConfig implements Config, Displayable {
+public class ConnectionConfig implements Config {
     public final static String CONFIG_NAME = "connectionConfig";
+
+    private Map<String, String> env = System.getenv();
     private Map connectionDescriptors = new HashMap();
     
     /** Creates a new instance of ConnectionConfig */
@@ -58,7 +62,7 @@ public class ConnectionConfig implements Config, Displayable {
                 if (nodeName.equals("connection")) {
                     String name = elem.getAttribute("name");  
                     String driverName = elem.getAttribute("driverName");
-                    String connectionString = elem.getAttribute("connectionString");
+                    String connectionString = getConnectionString(elem);
                     
                     JdbcConnectionDescriptor connectionDescriptor = new JdbcConnectionDescriptor(name, driverName, connectionString);
                     
@@ -91,32 +95,25 @@ public class ConnectionConfig implements Config, Displayable {
         } 
         return null;
     }
-    
-    // Displayable
-    public String display() {
-        return display ("");
-    }
-    
-    public String display(String objectDescription) {
-        Map displayedObjects = new HashMap();
-        return display (objectDescription, 0, 0, displayedObjects);
-    }
-    
-    public String display(String objectDescription, int level, int maxLevels, Map displayedObjects) {
-        DisplayBuffer displayBuffer = DisplayBuffer.newInstance("ConnectionConfig", objectDescription, level, maxLevels);
-        if (displayBuffer == null) {
-            return "";
+
+    /**
+     * The xml file might contain the connection string or a reference to an environment variable that holds the
+     * connection string.
+     */
+    private String getConnectionString(Element elem) {
+
+        String connectionString = elem.getAttribute("connectionString");
+        if (connectionString != null && connectionString.startsWith("${"))  {
+            String envVariableName = connectionString.substring(2, connectionString.length()-1);
+            Logger.debug(this, "envVariableName: " + envVariableName);
+            System.out.println("envVariableName: " + envVariableName);
+            connectionString = env.get(envVariableName);
         }
-        
-        Collection collection = connectionDescriptors.values();
-        Iterator i = collection.iterator();
-        while (i.hasNext()) {
-            ConnectionDescriptor connectionDescriptor = (ConnectionDescriptor)i.next();
-            Displayable displayable = (Displayable)connectionDescriptor;
-            displayBuffer.append(displayable.display("", level+1, maxLevels, displayedObjects));
-        }
-        return displayBuffer.toString();
-        
+
+        return connectionString;
     }
+
+
     
+
 }

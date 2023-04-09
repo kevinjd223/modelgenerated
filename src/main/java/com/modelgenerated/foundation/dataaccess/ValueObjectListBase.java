@@ -29,8 +29,15 @@ public class ValueObjectListBase<E> extends ArrayList<E> implements ValueObjectL
     /** Creates a new instance of ValueObjectListBase */
     public ValueObjectListBase() {
     }
-    
-    /** 
+
+    /**
+     * Constructor with initialCapacity
+     */
+    // public ValueObjectListBase(int initialCapacity) {
+    //     super(initialCapacity);
+    // }
+
+    /**
      * Find the value object in the list that is identified by idString
      * @param idString
      * @return matching value object
