@@ -76,7 +76,11 @@ public class ServiceLocator  {
     public static void init() {
         // do nothing. forces stat
     }
-    
+
+    public static <T> T findService(Class<T> remoteClass) {
+        return (T)findService(remoteClass.getName());
+    }
+
     public static Object findService(String remoteName) {
         Assert.check(remoteName != null, "remoteName != null");
         Object remoteInterface = null;
