@@ -14,9 +14,12 @@ import com.modelgenerated.foundation.logging.Logger;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.Types;
 import java.sql.SQLException;
+import java.time.DateTimeException;
+import java.time.LocalDate;
 
 /**
  *
@@ -69,6 +72,7 @@ public class JDBCUtil {
             statement.setTimestamp(index, new java.sql.Timestamp(value.getTime()));
         }        
     }
+
     /**
      *  Sets a date on a jdbc prepared statement
      */
@@ -82,12 +86,42 @@ public class JDBCUtil {
             statement.setDate(index, new java.sql.Date(value.getTime()));
         }
     }
+
     /**
      *  Sets a datetime on a jdbc prepared statement
      */
     public static void setStatementDateTime(PreparedStatement statement, int index, java.util.Date value, boolean nullable) throws SQLException {
         setStatementTimestamp(statement, index, value, nullable);
     }
+
+    /**
+     *  Sets an instant on a jdbc prepared statement
+     */
+    public static void setStatement(PreparedStatement statement, int index, java.time.Instant value, boolean nullable) throws SQLException {
+        if (!nullable) {
+            Assert.check(value != null, "value != null, index = " + index);
+        }
+        if (value == null) {
+            statement.setNull(index, Types.DATE);
+        } else {
+            statement.setTimestamp(index, new java.sql.Timestamp(value.toEpochMilli()));
+        }
+    }
+
+    /**
+     *  Sets an instant on a jdbc prepared statement
+     */
+    public static void setStatement(PreparedStatement statement, int index, java.time.LocalDate value, boolean nullable) throws SQLException {
+        if (!nullable) {
+            Assert.check(value != null, "value != null, index = " + index);
+        }
+        if (value == null) {
+            statement.setNull(index, Types.DATE);
+        } else {
+            statement.setDate(index, java.sql.Date.valueOf(value));
+        }
+    }
+
     /**
      *  Sets a date on a jdbc prepared statement
      */
@@ -140,16 +174,17 @@ public class JDBCUtil {
         Assert.check(nullable == false, "nullable == false, index = " + index); 
         statement.setInt(index, value);
     }
-	public static void setStatement(PreparedStatement statement, int index, Integer value, boolean nullable) throws SQLException {
-		if (!nullable) {
-            Assert.check(value != null, "value != null, index = " + index); 
-		}
-		if (value == null) {
-			statement.setNull(index, Types.INTEGER);
-		} else {
-			statement.setDouble(index, value.intValue());
-		}        
-	}
+
+    public static void setStatement(PreparedStatement statement, int index, Integer value, boolean nullable) throws SQLException {
+        if (!nullable) {
+            Assert.check(value != null, "value != null, index = " + index);
+        }
+        if (value == null) {
+            statement.setNull(index, Types.INTEGER);
+        } else {
+            statement.setDouble(index, value.intValue());
+        }
+    }
     public static void setStatement(PreparedStatement statement, int index, EnumBase value, boolean nullable) throws SQLException {
         if (!nullable) {
             Assert.check(value != null, "value != null, index = " + index); 
