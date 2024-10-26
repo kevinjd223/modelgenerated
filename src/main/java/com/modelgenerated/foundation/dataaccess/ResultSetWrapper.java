@@ -7,11 +7,18 @@
 
 package com.modelgenerated.foundation.dataaccess;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.
+
+		Instant;
+import java.time.LocalDate;
 
 /**
- *
+ * Contains static methods to wrap ResultSet methods.
+ * Handles null value for specific types. Converts java.sql.Date to java.time.Instant and java.time.LocalDate.
  * @author  kevind
  */
 public class ResultSetWrapper {
@@ -25,7 +32,7 @@ public class ResultSetWrapper {
 		if (resultSet.wasNull()) {
 			return null;
 		} else {
-			return new Boolean(value);
+			return Boolean.valueOf(value);
 		}        
 	}
     
@@ -34,17 +41,27 @@ public class ResultSetWrapper {
 		if (resultSet.wasNull()) {
 			return null;
 		} else {
-			return new Double(value);
+			return Double.valueOf(value);
 		}        
 	}
-    
+
+	public static Instant getInstant(ResultSet resultSet, int index) throws SQLException {
+		Timestamp timestamp = resultSet.getTimestamp(index);
+		return timestamp == null ? null : timestamp.toInstant();
+	}
+
 	public static Integer getInteger(ResultSet resultSet, int index) throws SQLException {
 		int value = resultSet.getInt(index);
 		if (resultSet.wasNull()) {
 			return null;
 		} else {
-			return new Integer(value);
+			return Integer.valueOf(value);
 		}        
 	}
-    
+
+	public static LocalDate getLocalDate(ResultSet resultSet, int index) throws SQLException {
+		Date date = resultSet.getDate(index);
+		return date == null ? null : date.toLocalDate();
+	}
+
 }
