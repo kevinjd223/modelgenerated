@@ -1,7 +1,6 @@
-/*
- * UserContext.java
+/* UserContext.java
  *
- * Copyright 2002-2005 Kevin Delargy.
+ * Copyright 2002-2024 Kevin Delargy.
  */
 
 package com.modelgenerated.foundation.dataaccess;
@@ -9,10 +8,11 @@ package com.modelgenerated.foundation.dataaccess;
 import com.modelgenerated.authentication.Tenant;
 import com.modelgenerated.foundation.identity.Identity;
 import java.io.Serializable;
+
 import net.jcip.annotations.Immutable;
 
 /**
- * This object is used by data access objects to give context to updates.
+ * This object is used by data access objects to give context to database operations.
  * 
  * @author  kevind
  */
@@ -23,7 +23,7 @@ public class UserContext implements Serializable {
     private final Identity accountId;
     private final Tenant tenant;
     private final Object user;
-    
+
 	/** Creates a new instance of UserContext */
     public UserContext(String userName, Identity accountId, Tenant tenant) {
         this.userName = userName;
@@ -32,6 +32,11 @@ public class UserContext implements Serializable {
         this.user = null;
     }
 
+    /**
+     * Constructor that allow user to be set.
+     * @param userContext
+     * @param _user
+     */
     public UserContext(UserContext userContext, Object _user) {
         this.userName = userContext.userName;
         this.accountId = userContext.accountId;
@@ -62,5 +67,5 @@ public class UserContext implements Serializable {
     public Object getUser() {
         return user;
     }
-    
+
 }

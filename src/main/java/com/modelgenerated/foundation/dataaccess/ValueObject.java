@@ -1,8 +1,6 @@
-/*
- * ValueObject.java
+/* ValueObject.java
  *
- * Created on December 31, 2002, 6:37 AM
- * Copyright 2002-2005 Kevin Delargy.
+ * Copyright 2002-2024 Kevin Delargy.
  */
 
 package com.modelgenerated.foundation.dataaccess;
@@ -10,8 +8,9 @@ package com.modelgenerated.foundation.dataaccess;
 import com.modelgenerated.foundation.identity.Identity;
 import java.util.Date;
 import java.util.Iterator;
+
 /**
- *
+ * Base interface for generated value objects.
  * @author  kevind
  */
 public interface ValueObject {
