@@ -61,8 +61,7 @@ public class ObjectFieldSizeConfig  implements Config {
     
     public int getObjectFieldSize(String objectField) {
         Integer size = (Integer)objectFieldSizes.get(objectField);
-        Assert.check(size != null, "size != null, " + objectField);
-        return size.intValue();
+        return size == null ? 0 : size.intValue();
     }
 
 }
