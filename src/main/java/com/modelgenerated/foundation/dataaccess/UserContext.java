@@ -9,14 +9,12 @@ import com.modelgenerated.authentication.Tenant;
 import com.modelgenerated.foundation.identity.Identity;
 import java.io.Serializable;
 
-import net.jcip.annotations.Immutable;
-
 /**
  * This object is used by data access objects to give context to database operations.
- * 
+ * This class is immutable
  * @author  kevind
  */
-@Immutable
+
 public class UserContext implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private final String userName;
@@ -61,8 +59,8 @@ public class UserContext implements Serializable {
 	}
 
     /** 
-     * User attribute is a place holder for the application to store information about the user. The modelgenerated data access code does not use this in any way other 
-     * than to pass it back calling application when requested.
+     * User attribute is a place for the application to store information about the user. The modelgenerated data access code does not use this in any way other
+     * than to pass it back to the calling application when requested.
      */
     public Object getUser() {
         return user;
