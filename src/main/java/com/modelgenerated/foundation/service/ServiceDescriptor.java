@@ -7,12 +7,8 @@
 
 package com.modelgenerated.foundation.service;
 
-import com.modelgenerated.foundation.debug.Displayable;
-import com.modelgenerated.foundation.debug.DisplayBuffer;
+import com.modelgenerated.foundation.EjbVersionEnum;
 import com.modelgenerated.foundation.jndi.JndiDescriptor;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  *
