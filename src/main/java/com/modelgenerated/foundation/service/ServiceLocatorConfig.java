@@ -7,6 +7,7 @@
 
 package com.modelgenerated.foundation.service;
 
+import com.modelgenerated.foundation.EjbVersionEnum;
 import com.modelgenerated.foundation.config.Config;
 import com.modelgenerated.foundation.config.ConfigLocator;
 import com.modelgenerated.foundation.config.ConfigNotFoundException;
