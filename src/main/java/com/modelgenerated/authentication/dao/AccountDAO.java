@@ -21,5 +21,7 @@ public interface AccountDAO extends DataAccessObject {
 
     public AccountList search(UserContext userContext, SearchCriteria searchCriteria, boolean deepCopy);
     public AccountList search(TransactionContext transactionContext, SearchCriteria searchCriteria, boolean deepCopy);
+    public int searchCount(UserContext userContext, SearchCriteria searchCriteria);
+    public int searchCount(TransactionContext transactionContext, SearchCriteria searchCriteria);
 
 }
