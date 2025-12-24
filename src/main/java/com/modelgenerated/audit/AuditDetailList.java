@@ -5,7 +5,6 @@
 package com.modelgenerated.audit;
 
 import com.modelgenerated.foundation.dataaccess.ValueObjectList;
-import java.util.Date;
 
 
 /**

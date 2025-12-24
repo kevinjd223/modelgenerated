@@ -78,7 +78,8 @@ public class AuditDAOImpl extends AbstractDataAccessObject implements AuditDAO {
         sql.append("SystemUser = ?,");
         sql.append("EventType = ?,");
         sql.append("EventDate = ? ");
-        sql.append("where id = ?");
+        sql.append("where tid = ? ");
+        sql.append("and id = ?");
         sqlUpdate = sql.toString();
 
     }
@@ -114,7 +115,11 @@ public class AuditDAOImpl extends AbstractDataAccessObject implements AuditDAO {
             sql.append("select ");
             sql.append(sqlSelect);
             sql.append("from Audit as a ");
-            sql.append("where a.tid = ? and a.id = ? ");
+            // objectTableAlias: a
+            // columnName: id
+            // realname: id
+            sql.append("where a.tid = ? ");
+            sql.append("and a.id = ? ");
             Logger.debug(this, "select from Audit");
             Logger.debug(this, sql);
             statement = connection.prepareStatement(sql.toString());
@@ -162,13 +167,15 @@ public class AuditDAOImpl extends AbstractDataAccessObject implements AuditDAO {
             sql.append("select ");
             sql.append(sqlSelectWithoutJoin);
             sql.append("from Audit as a ");
-            sql.append("where a.id = ? ");
+            sql.append("where a.tid = ? ");
+            sql.append("and a.id = ? ");
             Logger.debug(this, "select without joins from Audit");
             Logger.debug(this, sql);
             statement = connection.prepareStatement(sql.toString());
 
 
-            statement.setBytes(1, id.getByteValue());
+            statement.setBytes(1, transactionContext.getUserContext().getTenantId().getByteValue());
+            statement.setBytes(2, id.getByteValue());
             resultSet = statement.executeQuery();
             Map<Identity,ValueObject> loadedObjects = new HashMap<Identity,ValueObject>();
             AuditList auditList = getAuditListFromResultSet(transactionContext, resultSet, loadedObjects);
@@ -288,7 +295,8 @@ public class AuditDAOImpl extends AbstractDataAccessObject implements AuditDAO {
             JDBCUtil.setStatement(statement, 2, audit.getEventType(), false);
             JDBCUtil.setStatement(statement, 3, audit.getEventDate(), false);
             // where clause
-            JDBCUtil.setStatement(statement, 4, audit.getId(), false);
+            JDBCUtil.setStatement(statement, 4, transactionContext.getUserContext().getTenantId(), false);
+            JDBCUtil.setStatement(statement, 5, audit.getId(), false);
 
             statement.execute();
             } catch (SQLException e) {
@@ -380,7 +388,11 @@ public class AuditDAOImpl extends AbstractDataAccessObject implements AuditDAO {
             sql.append("select ");
             sql.append(sqlSelect);
             sql.append("from Audit as a ");
-            sql.append("where a.tid = ? and a.SystemUser = ? ");
+            // objectTableAlias: a
+            // columnName: SystemUser
+            // realname: SystemUser
+            sql.append("where a.tid = ? ");
+            sql.append("and a.SystemUser = ? ");
             Logger.debug(this, "select from Audit");
             Logger.debug(this, sql);
             statement = connection.prepareStatement(sql.toString());
@@ -474,6 +486,54 @@ public class AuditDAOImpl extends AbstractDataAccessObject implements AuditDAO {
                 }
             }
             return auditList;
+        } catch (SQLException e) {
+            throw new DataAccessException ("Error finding record ", e);
+        }
+    }
+
+    public int searchCount(UserContext userContext, SearchCriteria searchCriteria) {
+        Assert.check(userContext != null, "userContext != null");
+        TransactionContext transactionContext = new TransactionContext(userContext);
+        try {
+            return searchCount(transactionContext, searchCriteria);
+        } finally {
+            transactionContext.close();
+        }
+    }
+
+    public int searchCount(TransactionContext transactionContext, SearchCriteria searchCriteria) {
+        Assert.check(transactionContext != null, "transactionContext != null");
+        if (searchCriteria == null) {
+            searchCriteria = new SearchCriteriaBase();
+        }
+        try {
+            Connection connection = transactionContext.findConnection(daoDescriptor.getConnectionName());
+            Assert.check(connection != null, "connection != null");
+
+            StringBuilder sql = new StringBuilder();
+            sql.append("select count(*)");
+            sql.append("from Audit as a ");
+            searchCriteria.setPreviousAlias("a");
+            sql.append(searchCriteria.getFromClause());
+            String whereClause = searchCriteria.getWhereClause();
+            sql.append("where a.tid = ? ");
+            if (!StringUtil.isEmpty(whereClause)) { 
+                sql.append(" and (");
+                sql.append(whereClause);
+                sql.append(")");
+            }
+            Logger.debug(this, "select from Audit");
+            Logger.debug(this, sql);
+            PreparedStatement statement = connection.prepareStatement(sql.toString());
+
+            Identity tenantId = transactionContext.getUserContext().getTenantId();
+            Assert.check(tenantId != null, "tenantId != null");
+            JDBCUtil.setStatement(statement, 1, tenantId, false);
+            searchCriteria.setParameters(statement, 2);
+            ResultSet resultSet = statement.executeQuery();
+
+            resultSet.next();
+            return resultSet.getInt(1);
         } catch (SQLException e) {
             throw new DataAccessException ("Error finding record ", e);
         }

@@ -102,6 +102,9 @@ public class TenantDAOImpl extends AbstractDataAccessObject implements TenantDAO
             sql.append("select ");
             sql.append(sqlSelect);
             sql.append("from Tenant as obj ");
+            // objectTableAlias: obj
+            // columnName: id
+            // realname: id
             sql.append("where obj.id = ? ");
             Logger.debug(this, "select from Tenant");
             Logger.debug(this, sql);
@@ -398,6 +401,9 @@ public class TenantDAOImpl extends AbstractDataAccessObject implements TenantDAO
             sql.append("select ");
             sql.append(sqlSelect);
             sql.append("from Tenant as obj ");
+            // objectTableAlias: obj
+            // columnName: TenantName
+            // realname: TenantName
             sql.append("where obj.TenantName = ? ");
             Logger.debug(this, "select from Tenant");
             Logger.debug(this, sql);
@@ -486,6 +492,49 @@ public class TenantDAOImpl extends AbstractDataAccessObject implements TenantDAO
                 }
             }
             return tenantList;
+        } catch (SQLException e) {
+            throw new DataAccessException ("Error finding record ", e);
+        }
+    }
+
+    public int searchCount(UserContext userContext, SearchCriteria searchCriteria) {
+        Assert.check(userContext != null, "userContext != null");
+        TransactionContext transactionContext = new TransactionContext(userContext);
+        try {
+            return searchCount(transactionContext, searchCriteria);
+        } finally {
+            transactionContext.close();
+        }
+    }
+
+    public int searchCount(TransactionContext transactionContext, SearchCriteria searchCriteria) {
+        Assert.check(transactionContext != null, "transactionContext != null");
+        if (searchCriteria == null) {
+            searchCriteria = new SearchCriteriaBase();
+        }
+        try {
+            Connection connection = transactionContext.findConnection(daoDescriptor.getConnectionName());
+            Assert.check(connection != null, "connection != null");
+
+            StringBuilder sql = new StringBuilder();
+            sql.append("select count(*)");
+            sql.append("from Tenant as obj ");
+            searchCriteria.setPreviousAlias("obj");
+            sql.append(searchCriteria.getFromClause());
+            String whereClause = searchCriteria.getWhereClause();
+            if (!StringUtil.isEmpty(whereClause)) { 
+                sql.append("where ");
+                sql.append(whereClause);
+            }
+            Logger.debug(this, "select from Tenant");
+            Logger.debug(this, sql);
+            PreparedStatement statement = connection.prepareStatement(sql.toString());
+
+            searchCriteria.setParameters(statement, 1);
+            ResultSet resultSet = statement.executeQuery();
+
+            resultSet.next();
+            return resultSet.getInt(1);
         } catch (SQLException e) {
             throw new DataAccessException ("Error finding record ", e);
         }

@@ -21,5 +21,7 @@ public interface AuditDAO extends DataAccessObject {
 
     public AuditList search(UserContext userContext, SearchCriteria searchCriteria, boolean deepCopy);
     public AuditList search(TransactionContext transactionContext, SearchCriteria searchCriteria, boolean deepCopy);
+    public int searchCount(UserContext userContext, SearchCriteria searchCriteria);
+    public int searchCount(TransactionContext transactionContext, SearchCriteria searchCriteria);
 
 }

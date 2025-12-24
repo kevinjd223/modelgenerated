@@ -21,5 +21,7 @@ public interface TenantDAO extends DataAccessObject {
 
     public TenantList search(UserContext userContext, SearchCriteria searchCriteria, boolean deepCopy);
     public TenantList search(TransactionContext transactionContext, SearchCriteria searchCriteria, boolean deepCopy);
+    public int searchCount(UserContext userContext, SearchCriteria searchCriteria);
+    public int searchCount(TransactionContext transactionContext, SearchCriteria searchCriteria);
 
 }
