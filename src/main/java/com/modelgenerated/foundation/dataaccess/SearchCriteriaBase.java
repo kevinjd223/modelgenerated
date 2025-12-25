@@ -61,7 +61,7 @@ public class SearchCriteriaBase implements SearchCriteria, Serializable {
     
     // todo: refactor/rename getOrderBy():String so it is not confused with getOrderByList()
     public String getOrderBy() {
-        StringBuffer strbuf = new StringBuffer();        
+        StringBuilder strbuf = new StringBuilder();
         if (orderByList.size() > 0) {
             strbuf.append("ORDER BY ");
             for (int i = 0; i < orderByList.size(); i++) {
