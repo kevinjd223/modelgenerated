@@ -161,7 +161,7 @@ public abstract class AbstractDataAccessObject implements DataAccessObject {
     }
     
     protected String getVendorSpecificRowLimitPrefix(Connection connection, int topAmount) throws SQLException {
-        StringBuffer sql = new StringBuffer();
+        StringBuilder sql = new StringBuilder();
         if (topAmount > 0) {
             DatabaseMetaData meta = connection.getMetaData();
             if ("Microsoft SQL Server".equals(meta.getDatabaseProductName())) {
@@ -174,7 +174,7 @@ public abstract class AbstractDataAccessObject implements DataAccessObject {
     }
     
     protected String getVendorSpecificRowLimitPostfix(Connection connection, int topAmount) throws SQLException {
-        StringBuffer sql = new StringBuffer();
+        StringBuilder sql = new StringBuilder();
         if (topAmount > 0) {
             DatabaseMetaData meta = connection.getMetaData();
             if (!"Microsoft SQL Server".equals(meta.getDatabaseProductName())) {
