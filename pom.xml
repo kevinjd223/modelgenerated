@@ -11,10 +11,11 @@
 			<version>4.13.2</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/jakarta.ejb/jakarta.ejb-api -->
 		<dependency>
-		    <groupId>javax.ejb</groupId>
-		    <artifactId>ejb-api</artifactId>
-		    <version>3.0</version>
+			<groupId>jakarta.ejb</groupId>
+			<artifactId>jakarta.ejb-api</artifactId>
+			<version>4.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>jug</groupId>

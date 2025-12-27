@@ -1,1 +1,14 @@
 /target/
+/src/main/config/database/mssql/Account.sql
+/src/main/config/database/mssql/Audit.sql
+/src/main/config/database/mssql/AuditDetail.sql
+/src/main/config/database/mssql/createGeneratedTables.bat
+/src/main/config/database/mssql/recreateIndexesMssql.sql
+/src/main/config/database/mssql/Tenant.sql
+/src/main/config/database/mysql/tables/Account.sql
+/src/main/config/database/mysql/tables/Audit.sql
+/src/main/config/database/mysql/tables/AuditDetail.sql
+/src/main/config/database/mysql/tables/createGeneratedTables.bat
+/src/main/config/database/mysql/tables/createGeneratedTables.sh
+/src/main/config/database/mysql/tables/Tenant.sql
+/src/main/config/database/mysql/tablesrecreateIndexesMysql.sql
